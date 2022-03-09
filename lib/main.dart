@@ -10,13 +10,25 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Well Made'),
+          title: Text('앱임'),
         ),
-        body: Center(
-            child: Image(
-                image: NetworkImage(
-                    "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/22QT/image/p-RX98d_34y9ElK_Qfwz8OfHhxM.jpg"))),
-      ),
+        body: Container(
+          child: Text('안녕'),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          child: SizedBox(
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(Icons.phone),
+                Icon(Icons.chat),
+                Icon(Icons.contact_page),
+              ],
+            ),
+          ),
+        ),
+      )
     );
   }
 }
