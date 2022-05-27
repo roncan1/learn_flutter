@@ -4,31 +4,44 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('앱임'),
-        ),
-        body: Container(
-          child: Text('안녕'),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          child: SizedBox(
-            height: 70,
+      debugShowCheckedModeBanner: false,
+      home: StorePage(),
+    );
+  }
+}
+
+class StorePage extends StatelessWidget {
+  const StorePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(25.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.phone),
-                Icon(Icons.chat),
-                Icon(Icons.contact_page),
+                Text("Woman", style: TextStyle(fontWeight: FontWeight.bold)),
+                Spacer(),
+                Text("Kids", style: TextStyle(fontWeight: FontWeight.bold)),
+                Spacer(),
+                Text("Shoes", style: TextStyle(fontWeight: FontWeight.bold)),
+                Spacer(),
+                Text("Bag", style: TextStyle(fontWeight: FontWeight.bold))
               ],
             ),
           ),
-        ),
-      )
+          Image.asset("assets/bag.jpg", fit: BoxFit.cover,),
+          Image.asset("assets/cloth.jpg", fit: BoxFit.cover,)
+        ],
+      ),
     );
   }
 }
