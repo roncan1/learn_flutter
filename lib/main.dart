@@ -1,50 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/components/profile_buttons.dart';
-import 'package:learn_flutter/components/profile_count_info.dart';
-import 'package:learn_flutter/components/profile_drawer.dart';
-import 'package:learn_flutter/components/profile_header.dart';
-import 'package:learn_flutter/components/profile_tab.dart';
-import 'package:learn_flutter/theme.dart';
+import 'package:learn_flutter/pages/home_page.dart';
+import 'package:learn_flutter/pages/login_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme(),
-      home: ProfilePage(),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: ProfileDrawer(),
-      appBar: _buildProfileAppBar(),
-      body: Column(
-        children: [
-          SizedBox(height: 20,),
-          ProfileHeader(),
-          SizedBox(height: 20,),
-          ProfileCountInfo(),
-          SizedBox(height: 20,),
-          ProfileButtons(),
-          Expanded(child: ProfileTab()),
-        ],
+//테마 설정
+      theme: ThemeData(
+          textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.black,
+                primary: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)
+                ),
+                minimumSize: Size(400, 60),
+              )
+          )
       ),
-    );
-  }
 
-  AppBar _buildProfileAppBar() {
-    return AppBar(
-      leading: Icon(Icons.arrow_back_ios),
-      title: Text("Profile", style: TextStyle(color: Colors.black),),
-      centerTitle: true,
+      initialRoute: "/login",
+      routes: {
+        "/login": (context) => LoginPage(),
+        "/home": (context) => HomePage(),
+      },
     );
   }
 }
